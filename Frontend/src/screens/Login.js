@@ -4,7 +4,6 @@ import AddProfilescreen from './AddProfilescreen';
 import "./Login.css";
 import SignupScreen from "./SignupScreen";
 import {
-  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
