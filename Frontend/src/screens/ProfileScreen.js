@@ -18,7 +18,7 @@ function ProfileScreen() {
         
             <div className='profile__plans'>
               <h3>Plans</h3>
-              <PlansScreen/>
+              {/* <PlansScreen/> */}
              <button   className='profile__signout'>Sign Out</button>
              </div>
              </div>

@@ -18,7 +18,7 @@ function App() {
           <Login/>
         ):(
           <Routes>
-          <Route  path="/homepage" element={<HomeScreen/>}>
+          <Route  path="/" element={<HomeScreen/>}>
           </Route>
           <Route path='/profile' element={<ProfileScreen/>}>
             </Route> 
