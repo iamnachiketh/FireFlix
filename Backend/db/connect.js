@@ -1,12 +1,15 @@
 const express= require('express');
-const mysql=require('mysql');
+const mysql=require('mysql2');
 
 const app=express();
 
-module.exports = mysql.createConnection({
-     users:"root",
+let dbConnection = mysql.createConnection({
+     user:"root",
      host:"localhost",
-     password:"password",
+     password:"123456789",
      database:"ott_subscription"
-});
+})
 
+dbConnection.connect();
+
+module.exports=dbConnection;

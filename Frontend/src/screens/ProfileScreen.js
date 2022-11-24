@@ -1,7 +1,6 @@
 import React from 'react'
 import './ProfileScreen.css';
 import {useNavigate} from 'react-router-dom';
-import PlansScreen from "./PlansScreen";
 
 function ProfileScreen() {
   const navigate=useNavigate();

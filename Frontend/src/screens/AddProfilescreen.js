@@ -20,6 +20,7 @@ function AddProfilescreen() {
     phonenumber:phonenumberReg
   }).then((response)=>{
            console.log(response);
+           console.log(phonenumberReg);
     });
   }
   // const navigate=useNavigate();
@@ -35,7 +36,7 @@ function AddProfilescreen() {
         <input type="name" placeholder='Name' onChange={(e)=>{setNameReg(e.target.value)}} />
         <input type='password' placeholder='Setpassword' onChange={(e)=>{setPasswordReg(e.target.value)}} />
         <input type="phone number" placeholder='phone number' onChange={(e)=>{setPhonenumberReg(e.target.value)}}/>
-        <button type='submit' onClick={()=>{setPlans(true);register()}} >Select Plans</button>
+        <button type='submit' onClick={()=>{setPlans(true); register()}} >Select Plans</button>
      </form>
      </div>
       )}
