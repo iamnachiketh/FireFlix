@@ -19,7 +19,7 @@ app.post('/register',(req,res)=>{
         if(err){
          res.send("connection failed !" + JSON.stringify(err,undefined,2));
         }else{
-           res.send("data hase been included!!");
+           res.send(result);
         }
     });
 })

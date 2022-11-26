@@ -2,7 +2,7 @@ import React ,{useState}from 'react'
 import {  useNavigate } from 'react-router-dom';
 import AddProfilescreen from './AddProfilescreen';
 import "./Login.css";
-import SignupScreen from "./SignupScreen";
+import SignInScreen from "./SignInScreen";
 import {
   Routes,
   Route
@@ -27,14 +27,14 @@ const [signup,setSignup]=useState(false);
       <div className='login__body'>
       {Signin || signup? (
         <Routes>
-        <Route  path ="/signup" element={<SignupScreen/>}>
+        <Route  path ="/signIn" element={<SignInScreen/>}>
          </Route>
          <Route path="/Addprofile" element={<AddProfilescreen/>}>
          </Route>
          </Routes>
         ):(
             <>
-            <button className="login__button" onClick={()=>{setSignin(true);navigate('/signup')}}>SignIn</button>
+            <button className="login__button" onClick={()=>{setSignin(true);navigate('/signIn')}}>SignIn</button>
             <button className="login__button1" onClick={()=>{setSignup(true);navigate('/Addprofile')}}>SignUp</button>
             <h1 className='heading'>All Your  Shows In One Place.</h1>
             <h2 className='heading'>Watch anywhere.</h2>
