@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 //import { Counter } from './features/counter/Counter';
 import './App.css';
 import HomeScreen from "./screens/HomeScreen";
@@ -11,7 +11,8 @@ import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
 
-  const User=null;
+const User=null;
+
   return (
     <div className="App">
         {!User? (

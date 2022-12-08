@@ -1,9 +1,9 @@
 import React from 'react'
 import './Payment.css';
-function Payment() {
+function Payment({amount}) {
   return (
     <div className='payment__screen'>
-      <h1>amount</h1>
+      <h1>{amount}</h1>
       <h3>Select Payment</h3>
       <ul className='list__styling'>
       <form>
