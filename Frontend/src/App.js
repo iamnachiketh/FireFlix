@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React,{useState} from 'react';
 //import { Counter } from './features/counter/Counter';
 import './App.css';
 import HomeScreen from "./screens/HomeScreen";
@@ -10,16 +10,15 @@ import Login from './screens/Login';
 import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
-
-const User=null;
+  const [res,setRes]=useState(null);
 
   return (
     <div className="App">
-        {!User? (
-          <Login/>
+        {!res? (
+          <Login setRes={setRes}/>
         ):(
           <Routes>
-          <Route  path="/" element={<HomeScreen/>}>
+          <Route  path="/" element={<HomeScreen />}>
           </Route>
           <Route path='/profile' element={<ProfileScreen/>}>
             </Route> 

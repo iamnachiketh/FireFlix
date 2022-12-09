@@ -1,21 +1,25 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import "./SignInScreen.css";
-import axios from 'axios';
 import HomeScreen from './HomeScreen';
+import {
+  Routes,
+  Route
+} from "react-router-dom"
 
-function SignInScreen() {
+function SignInScreen(props) {
 
   const [email,setEmail]=useState("");
  // console.log(email);
   const [userpassword,setPassword]=useState("");
-  // const [login,setlogin]=useState(false);
+   const [login,setlogin]=useState(false);
    function upvote(e){   // function upvote
     e.preventDefault();
     return false
  }
-   const callapi = ()=>{
+   const callapi = async ()=>{
     console.log('hello',({email:email,password:userpassword}));
-    fetch('http://localhost:3001/login', { method: 'POST',
+   await fetch('http://localhost:3001/login', { method: 'POST',
     headers: {
       'Content-Type':
           'application/json;charset=utf-8'
@@ -28,11 +32,13 @@ function SignInScreen() {
               alert("Wrong credetials !!");
             }else{
               alert('loging in!!');
-              //setlogin(true);
-              
+              setlogin(true);
+              props.setres(response.status);
+
             }
           })
   }
+
   return (
     <div className="SignupScreen">
     <form onSubmit={upvote}>
@@ -40,9 +46,10 @@ function SignInScreen() {
         <input type="email" placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}} />
         <input type='password' placeholder='password' onChange={(e)=>{setPassword(e.target.value)}} />
         <button type='submit' onClick={callapi}>signin</button>
-             </form>
+      </form>
     </div>
   )
+ 
 }
 
 export default SignInScreen

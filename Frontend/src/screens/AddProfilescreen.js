@@ -13,14 +13,17 @@ function AddProfilescreen() {
   const [passwordReg,setPasswordReg]=useState('');
   // const [count,setcount]=useState(2);
   // const [phonenumberReg,setPhonenumberReg]=useState('');
-  const register=()=>{
+  const register=  ()=>{
+    //console.log('its register api')
     Axios.post('http://localhost:3001/register',{
     email:emailReg,
     username:nameReg,
     userpassword:passwordReg,
     // phonenumber:phonenumberReg
-  }).then((response)=>{
-           //console.log(response);
+  },
+  console.log('this is register api')
+  ).then((response)=>{
+           console.log(response);
            //console.log(phonenumberReg);
     });
   }

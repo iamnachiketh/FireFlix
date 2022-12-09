@@ -9,7 +9,7 @@ function ProfileScreen() {
       <img className="prof__logo"  src="https://i.imgur.com/vGdP70t.png" alt="" onClick={()=>navigate('/homepage')}/>
       <img  className="prof__avatar" src="https://i.imgur.com/TvdSKFV.png" alt=''/>
       <div className='profile__body'>
-        <h1>Edit Profile</h1>
+        <h1>{}Profile</h1>
         <div className='Profile__info'>
             <img src='https://i.imgur.com/TvdSKFV.png' alt=''/>
             <div className='profile__details'>

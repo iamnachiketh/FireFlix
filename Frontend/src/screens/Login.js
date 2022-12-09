@@ -8,7 +8,7 @@ import {
   Route
 } from "react-router-dom";
 
-function Login() {
+function Login(props) {
 
 const [Signin,setSignin]=useState(false)
 const navigate=useNavigate();
@@ -17,7 +17,8 @@ const [signup,setSignup]=useState(false);
 // const register=(event)=>{
 //    event.preventDefault();  //its not working !!!
 // }
-
+const [res,setres]=useState(null);
+props.setRes(res);
   return (
     <div className="Login">
       <div className="login__background">
@@ -28,7 +29,7 @@ const [signup,setSignup]=useState(false);
       <div className='login__body'>
       {Signin || signup? (
         <Routes>
-        <Route  path ="/signIn" element={<SignInScreen/>}>
+        <Route  path ="/signIn" element={<SignInScreen setRes={setres}/>}>
          </Route>
          <Route path="/Addprofile" element={<AddProfilescreen/>}>
          </Route>

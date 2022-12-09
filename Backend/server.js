@@ -78,21 +78,19 @@ app.post('/user/subscribe',(req,res)=>{
     //console.log(ans);
         if(ans)
         {
-             res.status(200).send(ans);
-           
+           res.status(200).send(ans);
         }else{
-           res.status(401).send('error !!');
+            res.status(401).send('error !!');
         }
     });
 })
 
-// //3 - Subscription update!
-// app.put('/user/:user_id/subscribe',(req,res)=>{
+//3 - Subscription update!
+// app.put('/user/payment',(req,res)=>{
 //     console.log(req.body.email,req.body.planId);
 //     const email=req.body.email;
-//     const planId=req.body.planId;
 //     //delete previous subscription!
-//     db.query("Insert into user_subscription ",(err,ans)=>{
+//     db.query("Update subscription set sub_status=? where email=?",["Active",email],(err,ans)=>{
 //         if(err){
 //          res.send("there is been a error!!");
 //         }
@@ -105,4 +103,29 @@ app.post('/user/subscribe',(req,res)=>{
 //         }
 //     });
 // })
+
+
+app.post('/user/payment',(req,res)=>{
+    //console.log(req.body.email,req.body.plan_id);
+    const payment_type=req.body.payment_type;
+    const email=req.body.email;
+    console.log(payment_type);
+    console.log(email);
+    db.query("insert into payment (email,payment_type,payment_name) values (?,?,?)",[email,payment_type,'check'],(err,ans)=>{
+        if(err){
+         res.send("there is been a error!!");
+        }
+    //console.log(ans);
+    db.query("Update subscription set sub_status=? where email=?",["Active",email],(err1,ans1)=>{
+        if(err1){
+         res.send("there is been a error!!");
+        }
+    console.log(ans1.length);
+        res.status(200).send('updated');
+    });
+    //    res.status(200).send('inserted');
+         
+    });
+   
+})
 app.listen(3001);
