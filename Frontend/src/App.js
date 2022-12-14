@@ -6,16 +6,18 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Login from './screens/Login';
 import ProfileScreen from './screens/ProfileScreen';
+import Router from './Router';
+import { useNavigate } from 'react-router-dom';
+import Login from './screens/Login';
 
 function App() {
-  const [res,setRes]=useState(null);
-
+  const [res,setRes]=useState(false);
+  const navigate=useNavigate();
   return (
     <div className="App">
         {!res? (
-          <Login setRes={setRes}/>
+          <Login/>
         ):(
           <Routes>
           <Route  path="/" element={<HomeScreen />}>

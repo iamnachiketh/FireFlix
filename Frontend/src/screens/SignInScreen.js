@@ -6,11 +6,12 @@ import {
   Routes,
   Route
 } from "react-router-dom"
-
+import Router from '../Router';
 function SignInScreen(props) {
 
   const [email,setEmail]=useState("");
  // console.log(email);
+ const navigate=useNavigate();
   const [userpassword,setPassword]=useState("");
    const [login,setlogin]=useState(false);
    function upvote(e){   // function upvote
@@ -33,12 +34,11 @@ function SignInScreen(props) {
             }else{
               alert('loging in!!');
               setlogin(true);
-              props.setres(response.status);
-
+              // props.setRes(()=>response);
+              navigate('/homepage');
             }
           })
   }
-
   return (
     <div className="SignupScreen">
     <form onSubmit={upvote}>

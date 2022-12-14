@@ -13,12 +13,6 @@ function Login(props) {
 const [Signin,setSignin]=useState(false)
 const navigate=useNavigate();
 const [signup,setSignup]=useState(false);
-// const[Res,setRes]=useState(401);
-// const register=(event)=>{
-//    event.preventDefault();  //its not working !!!
-// }
-const [res,setres]=useState(null);
-props.setRes(res);
   return (
     <div className="Login">
       <div className="login__background">
@@ -29,12 +23,14 @@ props.setRes(res);
       <div className='login__body'>
       {Signin || signup? (
         <Routes>
-        <Route  path ="/signIn" element={<SignInScreen setRes={setres}/>}>
+        <Route  path ="/signIn" element={<SignInScreen/>}>
          </Route>
          <Route path="/Addprofile" element={<AddProfilescreen/>}>
          </Route>
          </Routes>
-        ):(
+        
+        )
+        :(
             <>
             <button className="login__button" onClick={()=>{setSignin(true);navigate('/signIn')}}>SignIn</button>
             <button className="login__button1" onClick={()=>{setSignup(true);navigate('/Addprofile')}}>SignUp</button>

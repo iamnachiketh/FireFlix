@@ -71,7 +71,7 @@ app.post('/user/subscribe',(req,res)=>{
     //console.log(req.body.email,req.body.plan_id);
     const plan_id=req.body.plan_id;
     const email=req.body.email;
-    db.query("insert into subscription (email,plan_id,sub_status) values (?,?,?)",[email,plan_id,"true"],(err,ans)=>{
+    db.query("insert into subscription (email,plan_id,sub_status) values (?,?,?)",[email,plan_id,"inActive"],(err,ans)=>{
         if(err){
          res.send("there is been a error!!");
         }
@@ -85,24 +85,24 @@ app.post('/user/subscribe',(req,res)=>{
     });
 })
 
-//3 - Subscription update!
-// app.put('/user/payment',(req,res)=>{
-//     console.log(req.body.email,req.body.planId);
-//     const email=req.body.email;
-//     //delete previous subscription!
-//     db.query("Update subscription set sub_status=? where email=?",["Active",email],(err,ans)=>{
-//         if(err){
-//          res.send("there is been a error!!");
-//         }
-//     console.log(ans.length);
-//         if(ans.length)
-//         {
-//            res.status(200).send(ans);
-//         }else{
-//             res.status(401).send('error !!');
-//         }
-//     });
-// })
+// 3 - Subscription update!
+app.put('/user/subscriptionUpdate',(req,res)=>{
+    const plan_id=req.body.plan_id;
+    const email=req.body.email;
+    //delete previous subscription!
+    db.query("Update subscription set plan_id=? where email=?",[plan_id,email],(err,ans)=>{
+        if(err){
+         res.send("there is been a error!!");
+        }
+    //console.log(ans.length);
+        if(ans)
+        {
+           res.status(200).send("User Subscription is updated");
+        }else{
+            res.status(401).send('error !!');
+        }
+    });
+})
 
 
 app.post('/user/payment',(req,res)=>{
@@ -121,11 +121,30 @@ app.post('/user/payment',(req,res)=>{
          res.send("there is been a error!!");
         }
     console.log(ans1.length);
-        res.status(200).send('updated');
+        res.status(200).send('UPDETED!!');
     });
     //    res.status(200).send('inserted');
          
     });
    
 })
+
+app.put('/user/deleteaccount',(req,res)=>{
+    const plan_id=req.body.plan_id;
+    const email=req.body.email;
+    //delete previous subscription!
+    db.query("delete from  users where email=?",[email],(err,ans)=>{
+        if(err){
+         res.send("there is been a error!!");
+        }
+    //console.log(ans.length);
+        if(ans)
+        {
+           res.status(200).send("the account has been deleted!!!");
+        }else{
+            res.status(401).send('error !!');
+        }
+    });
+})
+
 app.listen(3001);
