@@ -14,7 +14,6 @@ import { BrowserRouter,
 function Router() {
   return (
     <div className='Routes'>
-         <BrowserRouter>
        <Routes>
        <Route path='/homepage' element={<HomeScreen/>}/>
        <Route path='/signin' element={<SignInScreen/>}/>
@@ -25,7 +24,6 @@ function Router() {
        <Route path='/addprofile' element={<AddProfilescreen/>}/>
 
        </Routes>
-      </BrowserRouter>
     </div>
   )
 }
