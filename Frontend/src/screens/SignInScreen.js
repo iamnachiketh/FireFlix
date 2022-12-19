@@ -1,18 +1,12 @@
 import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom';
 import "./SignInScreen.css";
-import HomeScreen from './HomeScreen';
-import {
-  Routes,
-  Route
-} from "react-router-dom"
-import Router from '../Router';
-
-function SignInScreen(props) {
+import { userAction } from "../features/userSlice";
+import { useDispatch } from 'react-redux';
+function SignInScreen() {
 
   const [email,setEmail]=useState("");
  // console.log(email);
- const navigate=useNavigate();
+ const dispatch= useDispatch();
   const [userpassword,setPassword]=useState("");
    const [login,setlogin]=useState(false);
    function upvote(e){   // function upvote
@@ -20,6 +14,7 @@ function SignInScreen(props) {
     return false
  }
    const callapi = async ()=>{
+
     console.log('hello',({email:email,password:userpassword}));
    await fetch('http://localhost:3001/login', { method: 'POST',
     headers: {
@@ -35,11 +30,11 @@ function SignInScreen(props) {
             }else{
               alert('loging in!!');
               setlogin(true);
-              // props.setRes(()=>response);
-              navigate('/homepage');
-            }
+              dispatch(userAction.login());
+        }
           })
   }
+
   return (
     <div className="SignupScreen">
     <form onSubmit={upvote}>
@@ -50,7 +45,6 @@ function SignInScreen(props) {
       </form>
     </div>
   )
- 
-}
+  }
 
 export default SignInScreen

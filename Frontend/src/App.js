@@ -7,24 +7,25 @@ import {
   Route
 } from "react-router-dom";
 import ProfileScreen from './screens/ProfileScreen';
-import Router from './Router';
-import { useNavigate } from 'react-router-dom';
 import Login from './screens/Login';
+import nav1 from './nav1';
+// import SignInScreen from './screens/SignInScreen'
+// import PlansScreen from './screens/PlansScreen'
+// import Payment from './screens/Payment'
+// import AddProfilescreen from './screens/AddProfilescreen'
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [res,setRes]=useState(false);
-  const navigate=useNavigate();
+  const isLoogedIn= useSelector((state)=>state.user.isLoogedIn);
+  let res=false;
+  console.log(isLoogedIn);
+  res=isLoogedIn;
   return (
     <div className="App">
         {!res? (
           <Login/>
         ):(
-          <Routes>
-          <Route  path="/" element={<HomeScreen />}>
-          </Route>
-          <Route path='/profile' element={<ProfileScreen/>}>
-            </Route> 
-         </Routes>
+          <HomeScreen/>
         ) }
     </div>
   );

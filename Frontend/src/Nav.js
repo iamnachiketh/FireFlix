@@ -1,7 +1,8 @@
 import React from 'react'
 import "./Nav.css";
 import { useEffect, useState } from "react";
-import {useNavigate,Link } from 'react-router-dom';
+import {useNavigate ,Link} from 'react-router-dom';
+import nav1 from './nav1';
 function Nav() {
     const [show,handleShow]=useState(false);
     const navigate=useNavigate();
@@ -19,7 +20,6 @@ function Nav() {
     },[]);
 
 
-
   return (
     <div className={`Nav ${show && "Nav_black"}`}>
         <div className="nav__contents">
@@ -31,12 +31,13 @@ function Nav() {
             />
         </Link>
         <img  className="nav__avatar" src="https://i.imgur.com/TvdSKFV.png" 
-        onClick={()=>navigate("/Profile")}
+        onClick={navigate('/profile')}
         alt=""/>
         </div>
         
     </div>
   )
 }
+
 
 export default Nav

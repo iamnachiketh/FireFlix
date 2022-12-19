@@ -121,7 +121,7 @@ app.post('/user/payment',(req,res)=>{
          res.send("there is been a error!!");
         }
     console.log(ans1.length);
-        res.status(200).send('UPDETED!!');
+        res.status(200).send('UPDATED!!');
     });
     //    res.status(200).send('inserted');
          

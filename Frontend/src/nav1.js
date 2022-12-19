@@ -6,13 +6,14 @@ import ProfileScreen from './screens/ProfileScreen'
 import Payment from './screens/Payment'
 import Login from './screens/Login'
 import AddProfilescreen from './screens/AddProfilescreen'
-import { BrowserRouter,
+import { 
      Routes, 
      Route 
     } from 'react-router-dom';
 
-function Router() {
+function nav1() {
   return (
+    
     <div className='Routes'>
        <Routes>
        <Route path='/homepage' element={<HomeScreen/>}/>
@@ -28,4 +29,4 @@ function Router() {
   )
 }
 
-export default Router
+export default nav1
