@@ -26,7 +26,11 @@ function PlansScreen({emailReg}) {
   },
           body: JSON.stringify({"email":email , "plan_id":plan})
   })
-          .then(response=>response)
+          .then((response)=>{
+            if(response.status === 400 || response.status === 401){
+              alert('there is been a error');
+            }
+          })
 
           console.log('hello',({email:email,plan_id:plan}));
  }

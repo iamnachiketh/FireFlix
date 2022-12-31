@@ -24,8 +24,8 @@ function AddProfilescreen() {
   },
   console.log('this is register api')
   ).then((response)=>{
-           console.log(response);
-           //console.log(phonenumberReg);
+           if(response.status===404 || response.status=== 401)
+           alert('something is wrong !!!');
     });
   }
   // const navigate=useNavigate();

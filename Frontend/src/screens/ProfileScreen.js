@@ -1,9 +1,15 @@
 import React from 'react'
 import './ProfileScreen.css';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userAction } from "../features/userSlice";
 
 function ProfileScreen() {
   const navigate=useNavigate();
+  const dispatch=useDispatch();
+  const logout = ()=>{
+    dispatch(userAction.logout());
+  }
   return (
     <div className='profileScreen'>
       <img className="prof__logo"  src="https://i.imgur.com/vGdP70t.png" alt="" onClick={()=>navigate('/homepage')}/>
@@ -18,7 +24,7 @@ function ProfileScreen() {
             <div className='profile__plans'>
               <h3>Plans</h3>
               {/* <PlansScreen/> */}
-             <button   className='profile__signout'>Sign Out</button>
+             <button   className='profile__signout' onClick={logout}>Sign Out</button>
              </div>
              </div>
         </div>

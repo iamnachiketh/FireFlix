@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const  db=require('./db/connect.js');
 const cors=require('cors');
+const Joi= require('joi');
 
 app.use(express.json());
 app.use(cors({origin: true, credentials: true}));
@@ -11,6 +12,17 @@ app.post('/register',(req,res)=>{
     const username=req.body.username;
     const userpassword=req.body.userpassword;
     //const phone_number = req.body.phonenumber;
+    const schema = Joi.object({
+        email: Joi.string().email({tlds:{allow: ['com', 'net'] }}).lowercase().required(),
+        userpassword: Joi.string().min(5).pattern(new RegExp('^[a-zA-Z0-9]')).required()
+    })
+    try{
+     const result= schema.validate({email,userpassword});
+    } catch(error){
+         error.status(422).send('There is something wrong with email and password');
+         console.log('hello');
+         return;
+    }
 
     //console.log(phone_number)
     db.query("INSERT INTO users (username,userpassword,email) VALUES (?,?,?)",[username,userpassword,email],(err,result)=>{
@@ -23,7 +35,7 @@ app.post('/register',(req,res)=>{
         }
     });
 })
-app.post('/login',(req,res)=>{
+app.get('/login',(req,res)=>{
     // console.log(req.body.email,req.body.userpassword);
     const email=req.body.email;
     const userpassword=req.body.userpassword;
