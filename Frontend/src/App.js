@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import ProfileScreen from './screens/ProfileScreen';
 import Login from './screens/Login';
-import nav1 from './nav1';
 // import SignInScreen from './screens/SignInScreen'
 // import PlansScreen from './screens/PlansScreen'
 // import Payment from './screens/Payment'
@@ -25,7 +24,7 @@ function App() {
         {!res? (
           <Login/>
         ):(
-          <HomeScreen/>
+        <HomeScreen/>
         ) }
     </div>
   );

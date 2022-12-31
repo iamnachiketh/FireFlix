@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
+import { useDispatch } from 'react-redux';
 import './Payment.css';
+import { userAction } from "../features/userSlice";
 function Payment(props) {
 
   // const[radio1,setradio1]=useState(false);
@@ -7,7 +9,10 @@ function Payment(props) {
   // const[radio3,setradio3]=useState(false);
   // const[radio4,setradio4]=useState(false);
   //const[type,setType]=useState('');
-
+  const dispatch =useDispatch();
+const Setlogin=()=>{
+  dispatch(userAction.login());
+}
 
  // const callAPI= async ()=>{
     // if(radio1){setType('debit card')}
@@ -36,7 +41,7 @@ function Payment(props) {
       <li> <input type='radio' name='payments' value="Phonepay" />Phonepay </li>
       </form>
       </ul>
-      <button   className='payment__button'  >Finish</button>
+      <button   className='payment__button' onClick={Setlogin}>Finish</button>
     </div>
   )
 }

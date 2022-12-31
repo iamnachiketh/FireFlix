@@ -2,12 +2,14 @@ import React,{useState} from 'react'
 import "./SignInScreen.css";
 import { userAction } from "../features/userSlice";
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 function SignInScreen() {
 
   const [email,setEmail]=useState("");
  // console.log(email);
  const dispatch= useDispatch();
   const [userpassword,setPassword]=useState("");
+  const navigate =useNavigate();
    const [login,setlogin]=useState(false);
    function upvote(e){   // function upvote
     e.preventDefault();
@@ -30,7 +32,9 @@ function SignInScreen() {
             }else{
               alert('loging in!!');
               setlogin(true);
+              // props.setRes(()=>response);
               dispatch(userAction.login());
+              navigate('/homepage');
         }
           })
   }
